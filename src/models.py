@@ -6,7 +6,6 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-   # is_active = db.Column(db.Boolean(), unique=False, nullable=True, default=True)
 
     def __repr__(self):
         return '<User %r>' % self.email
@@ -15,7 +14,6 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            # do not serialize the password, its a security breach
         }
     
     def create(self):
@@ -26,7 +24,6 @@ class Person(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(120), unique=True, nullable=False)
     last_name = db.Column(db.String(80), unique=False, nullable=False)
-   # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
         return '<Person %r>' % self.first_name
@@ -37,7 +34,6 @@ class Person(db.Model):
             "first_name": self.first_name,
             "last_name": self.last_name,
 
-            # do not serialize the password, its a security breach
         }
     def create(self):
         db.session.add(self)
@@ -48,7 +44,6 @@ class Planet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     planet_name = db.Column(db.String(120), unique=True, nullable=True)
     planet_size = db.Column(db.String(120), unique=True, nullable=True)
-    #is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
         return '<Planet %r>' % self.planet_name
@@ -60,7 +55,6 @@ class Planet(db.Model):
             "planet_size": self.planet_size,
 
 
-            # do not serialize the password, its a security breach
         }
     def create(self):
         db.session.add(self)
@@ -84,7 +78,6 @@ class FavoritePlanet(db.Model):
             "planet_name": self.planet_name,
             "planet_size": self.planet_size,
 
-            # do not serialize the password, its a security breach
         }
 
 class FavoritePerson(db.Model):
@@ -103,5 +96,4 @@ class FavoritePerson(db.Model):
             "first_name": self.first_name,
             "last_name": self.last_name,
 
-            # do not serialize the password, its a security breach
         }
